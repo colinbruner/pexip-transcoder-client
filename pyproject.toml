@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pexip-transcoder-client"
+version = "0.1.0"
+description = "CLI utility to manually provision a Pexip Transcoder Client with a Pexip Manager."
+authors = ["Colin Bruner <colin.d.bruner@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.25.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-httpbin = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pexip = "pexip"
