@@ -52,6 +52,10 @@ class Config(BaseConfigDict):
     FILENAME = "config.json"
 
     def __init__(self, directory=DEFAULT_CONFIG_DIR):
+        # if a directory isn't found, just return
+        if not directory:
+            return 
+
         self.directory = Path(directory)
         super().__init__(path=self.directory / self.FILENAME)
         try:

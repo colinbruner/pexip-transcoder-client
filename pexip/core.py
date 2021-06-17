@@ -26,13 +26,8 @@ def create(args):
 
 
 def delete(args):
-    print("TODO Delete!")
-    print(args)
-
-
-def manage(args):
-    print("TODO Manage!")
-    print(args)
+    print("TODO: Implement Delete!")
+    sys.exit()
 
 
 def main(args=sys.argv, cfg=Config()):
@@ -44,8 +39,7 @@ def main(args=sys.argv, cfg=Config()):
 
     actions = {
         "create": create,
-        "delete": delete,
-        "manage": manage,
+        "delete": delete
     }
 
     actions[action](data)

@@ -37,13 +37,6 @@ global_options.add_argument(
 )
 
 ###
-# Manage
-###
-
-manage = subparsers.add_parser("manage")
-manage.set_defaults(subparser="manage")
-
-###
 # Create
 ###
 provision_create = subparsers.add_parser("create")
