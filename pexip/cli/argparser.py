@@ -64,7 +64,6 @@ class PexipArgumentParser(argparse.ArgumentParser):
         for key, value in self.cfg.items():
             cfg_key = key.lower()
             if not getattr(self.args, cfg_key):
-                print(f"Setting {cfg_key} => {value}")
                 setattr(self.args, cfg_key, value)
 
     def _split_out_hostname(self):

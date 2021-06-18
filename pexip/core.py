@@ -17,7 +17,7 @@ def create_node(transcoder):
 
 
 def create(args):
-    """ Route transcoder creation, single transocder vs multiple. """
+    """ Route Pexip Transcoder creation. """
     if isinstance(args, list):
         for arg in args:
             create_node(arg)

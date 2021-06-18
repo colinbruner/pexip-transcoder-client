@@ -43,7 +43,10 @@ class PexipConnection:
         return None
 
     def _log_error(self, status, content):
-        print(f"Error - Status Code: {status}. Content {content}")
+        if status == 401:
+            print(f"Error {status}: Are auth_user and auth_pass set correctly?")
+        else:
+            print(f"Error {status}: Content: {content}")
 
     def _get_config(self):
         raise NotImplementedError()
@@ -140,7 +143,7 @@ class PexipNode(PexipClient):
         )
 
         if not response.ok:
-            print(f"Error: {response.content}\nStatus Code: {response.status_code}")
+            self._log_error(response.status, response.content)
             sys.exit(1)
 
         # TODO: Logging

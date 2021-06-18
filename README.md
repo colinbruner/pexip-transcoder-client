@@ -37,8 +37,11 @@ Any values passed via CLI *will* override these values specified in the configur
 The following is a usage example for full node creation via CLI, without any local configuration file found.
 
 ```bash
-$ pexip create --manager-url 'https://manager01.pexip.company.com' \
-  --hostname "transcoder01.pexip.company.com" \
+# Save MEET_MANAGER_PASS as an environment variable
+$ read -s MEET_MANAGER_PASS && export MEET_MANAGER_PASS
+# Create a Transcoder node configuration
+$ pexip create "transcoder01.pexip.company.com" \
+  --manager-url 'https://manager01.pexip.company.com' \
   --domain "company.com" \
   --gateway "192.168.1.1" \
   --private-ip "192.168.1.111" \
