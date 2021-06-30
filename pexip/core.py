@@ -30,6 +30,11 @@ def delete(args):
     sys.exit()
 
 
+def bootstrap(args):
+    with open(args.xml_file, "rb") as xml_file:
+        provision(xml_file, args.node_address)
+
+
 def main(args=sys.argv, cfg=Config()):
     program_name, *args = args
 
@@ -37,9 +42,6 @@ def main(args=sys.argv, cfg=Config()):
 
     data, action = parser.parse_args(args=args, cfg=cfg)
 
-    actions = {
-        "create": create,
-        "delete": delete
-    }
+    actions = {"create": create, "delete": delete, "bootstrap": bootstrap}
 
     actions[action](data)

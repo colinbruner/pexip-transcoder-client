@@ -63,8 +63,12 @@ class PexipArgumentParser(argparse.ArgumentParser):
 
         for key, value in self.cfg.items():
             cfg_key = key.lower()
-            if not getattr(self.args, cfg_key):
-                setattr(self.args, cfg_key, value)
+            try:
+                if not getattr(self.args, cfg_key):
+                    setattr(self.args, cfg_key, value)
+            except AttributeError:
+                # During 'bootstrap' subcommand, certain attributes aren't always present
+                pass
 
     def _split_out_hostname(self):
         """ Attempt to parse hostname positional argument as JSON blob """
@@ -73,6 +77,9 @@ class PexipArgumentParser(argparse.ArgumentParser):
             self.hostname = json.loads(self.args.hostname)
         except json.decoder.JSONDecodeError:
             self.hostname = self.args.hostname
+        except AttributeError:
+            # No args.hostname supplied, nothing to do.
+            return
         else:
             # Upon successful json.loads, remove the hostname attribute from self.args
             del self.args.hostname

@@ -44,8 +44,7 @@ provision_create.set_defaults(subparser="create")
 
 provision_create.add_argument(
     "--domain",
-    help="""
-    The domain of the new node.""",
+    help="The domain of the new node.",
 )
 provision_create.add_argument(
     "--private-ip",
@@ -118,3 +117,19 @@ for subparser in [provision_create, provision_delete]:
         "--system-location-name",
         help="Name of the system location to create or delete conferencing node from.",
     )
+
+
+###
+# Bootstrap
+###
+provision_bootstrap = subparsers.add_parser("bootstrap")
+provision_bootstrap.set_defaults(subparser="bootstrap")
+
+provision_bootstrap.add_argument(
+    "--xml-file",
+    help="The XML file to bootstrap the node with.",
+)
+provision_bootstrap.add_argument(
+    "--node-address",
+    help="The domain name or private IP address of the Pexip node to bootstrap.",
+)
