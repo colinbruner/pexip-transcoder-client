@@ -143,7 +143,8 @@ class PexipNode(PexipClient):
         )
 
         if not response.ok:
-            self._log_error(response.status, response.content)
+            # TODO: if debug print(data) ?
+            self._log_error(response.status_code, response.content)
             sys.exit(1)
 
         # TODO: Logging
