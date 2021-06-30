@@ -4,7 +4,7 @@ import json
 import configparser
 
 from .config import Config
-from .models import DataObject, PexipNode
+from .models import DataObject, PexipNode, provision
 from .exceptions import TranscoderAlreadyExists
 
 
