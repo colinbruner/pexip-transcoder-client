@@ -170,6 +170,11 @@ class PexipNode(PexipClient):
                 f"Connection timed out when attempting to provision node: {self.args.hostname}. Error: {e}"
             )
             self._error_and_write_xml(content)
+        except Exception as e:
+            print(
+                f"Unknown error when attempting to provision node: {self.args.hostname}. Error: {e}"
+            )
+            self._error_and_write_xml(content)
         else:
             if response.ok:
                 print(f"Success: {response.status_code} status code.")
