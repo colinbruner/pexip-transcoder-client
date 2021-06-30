@@ -156,11 +156,11 @@ class PexipNode(PexipClient):
         try:
             print(f"Attempting to provision the node {self.args.hostname}")
             # Send request, wait up to 5s (timeout=5) for a response.
-            # NOTE: This will not wait the full 5s if the host response
-            # with an error after, 2 seconds, for example.
+            # NOTE: This will not wait the full 5s if the host response with an error after, 2 seconds
+            # NOTE: This is a freshly stood up node, it will have a self-signed certificate. Verify MUST be false.
             response = requests_retry_session().post(
                 f"https://{self.args.private_ip}:8443/configuration/bootstrap",
-                verify=self.verify,
+                verify=False,
                 headers={"Content-Type": "text/xml"},
                 data=content,
                 timeout=5,
