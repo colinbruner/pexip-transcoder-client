@@ -50,7 +50,7 @@ class PexipArgumentParser(argparse.ArgumentParser):
             super().print_help()
             sys.exit()
 
-        self.cfg = Config(args.config_file)
+        self.cfg = Config(self.args.config_file)
 
         self._apply_config_values()
         self._split_out_hostname()
