@@ -160,12 +160,12 @@ class PexipNode(PexipClient):
         try:
             # Supress warnings, we realize this is a self-signed certificate.
             requests.packages.urllib3.disable_warnings()
-            print(f"Attempting to provision the node {hostname}")
+            print(f"Attempting to provision the node {hostname} at {self.args.private_ip}")
             # Send request, wait up to 5s (timeout=5) for a response.
             # NOTE: This will not wait the full 5s if the host response with an error after, 2 seconds
             # NOTE: This is a freshly stood up node, it will have a self-signed certificate. Verify MUST be false.
             response = requests_retry_session().post(
-                f"https://{hostname}:8443/configuration/bootstrap",
+                f"https://{self.args.private_ip}:8443/configuration/bootstrap",
                 verify=False,
                 headers={"Content-Type": "text/xml"},
                 data=content,

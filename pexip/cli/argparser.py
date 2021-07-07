@@ -64,6 +64,7 @@ class PexipArgumentParser(argparse.ArgumentParser):
         for key, value in self.cfg.items():
             cfg_key = key.lower()
             try:
+                # Set values found in the config if they're not passed over CLI
                 if not getattr(self.args, cfg_key):
                     setattr(self.args, cfg_key, value)
             except AttributeError:
