@@ -29,6 +29,12 @@ global_options.add_argument(
     """,
 )
 global_options.add_argument(
+    "--config-file",
+    help="""
+    Name of the JSON configuration file within the .pexip/ directory. E.g. 'prod.config.json'
+    """,
+)
+global_options.add_argument(
     "--insecure",
     action="store_true",
     help="""

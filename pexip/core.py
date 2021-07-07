@@ -35,12 +35,12 @@ def bootstrap(args):
         provision(xml_file, args.node_address)
 
 
-def main(args=sys.argv, cfg=Config()):
+def main(args=sys.argv):
     program_name, *args = args
 
     from .cli.args import parser
 
-    data, action = parser.parse_args(args=args, cfg=cfg)
+    data, action = parser.parse_args(args=args)
 
     actions = {"create": create, "delete": delete, "bootstrap": bootstrap}
 

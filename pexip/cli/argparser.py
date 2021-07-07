@@ -41,8 +41,7 @@ class PexipArgumentParser(argparse.ArgumentParser):
         self.action = None  # Represents the action to take
         self.hostname = None  # A 'hostname' or list of 'hostnames'
 
-    def parse_args(self, cfg: Config, args=None, namespace=None) -> argparse.Namespace:
-        self.cfg = cfg
+    def parse_args(self, args=None, namespace=None) -> argparse.Namespace:
 
         self.args = super().parse_args(args, namespace)
         try:
@@ -50,6 +49,8 @@ class PexipArgumentParser(argparse.ArgumentParser):
         except AttributeError:
             super().print_help()
             sys.exit()
+
+        self.cfg = Config(args.config_file)
 
         self._apply_config_values()
         self._split_out_hostname()

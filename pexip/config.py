@@ -49,15 +49,18 @@ class BaseConfigDict(dict):
 
 
 class Config(BaseConfigDict):
-    FILENAME = "config.json"
+    default_filename = "config.json"
 
-    def __init__(self, directory=DEFAULT_CONFIG_DIR):
+    def __init__(self, filename=None, directory=DEFAULT_CONFIG_DIR):
         # if a directory isn't found, just return
         if not directory:
-            return 
+            return
+
+        # use a filename if passed, else default
+        self.filename = filename if filename else self.default_filename
 
         self.directory = Path(directory)
-        super().__init__(path=self.directory / self.FILENAME)
+        super().__init__(path=self.directory / self.filename)
         try:
             with self.path.open("rt") as f:
                 try:
