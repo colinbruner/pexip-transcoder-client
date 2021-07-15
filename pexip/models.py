@@ -58,7 +58,7 @@ class PexipClient(PexipConnection):
     def _get_config(self, endpoint):
         """ Requests config attributes from the Pexip Meeting Manager. """
         route = self.routes[endpoint]
-        response = self.client.get(f"{self.url}{route}", verify=self.verify)
+        response = self.client.get(f"{self.url}{route}?limit=100", verify=self.verify)
         if not response.ok:
             self._log_error(response.status_code, response.content)
 

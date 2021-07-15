@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pexip"
-version = "0.2.4"
+version = "0.2.5"
 description = "Simple CLI utility to manually provision a Pexip Transcoder Client."
 authors = ["Colin Bruner <colin.d.bruner@gmail.com>"]
 
